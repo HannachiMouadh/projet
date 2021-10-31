@@ -14,4 +14,4 @@ const FooterAuth = () => {
     )
 }
 
-export default Footer
+export default FooterAuth;

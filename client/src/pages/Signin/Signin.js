@@ -4,28 +4,16 @@ import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../../JS/userslice/userSlice";
 import { useHistory } from "react-router-dom";
 
 
 const Signin = () => {
-  // function Copyright() {
-  //   return (
-  //     <Typography variant="body2" color="textSecondary" align="center">
-  //       {"Copyright © "}
-  //       Your Website &nbsp;
-  //       {new Date().getFullYear()}
-  //       {"."}
-  //     </Typography>
-  //   );
-  // }
-
   const useStyles = makeStyles((theme) => ({
     root: {
       height: "100vh",
@@ -66,11 +54,23 @@ const Signin = () => {
     email:"",
     password:"",
   });
+
+  const user = useSelector((state) => state.user.user)
+  const isAuth = localStorage.getItem("token");
+
   const handleLogin=(e)=>{
     e.preventDefault();
-   dispatch(loginUser(login));
-   history.push("/");
-   
+    dispatch(loginUser(login));
+      
+    if(isAuth && user.isAuth == true){
+      setTimeout(()=>{
+        history.push("/admin/home");
+       },1000)
+    }else{
+      setTimeout(()=>{
+        history.push("/");
+       },1000)
+    }
   }
   
   return (

@@ -51,6 +51,7 @@ export const userSlice = createSlice({
   reducers: {
     logout : (state,action)=>{
       localStorage.removeItem("token");
+      localStorage.removeItem("isAuth");
       state.user = null;
     }
   },
@@ -61,7 +62,10 @@ export const userSlice = createSlice({
     [registerUser.fulfilled]: (state,action) => {
       state.status = "success";
       state.user = action.payload.user;
-      localStorage.setItem("token",action.payload.token)
+      localStorage.setItem("token",action.payload.token);
+      if(action.payload.user.isAuth){
+        localStorage.setItem("isAuth",action.payload.user.isAuth);
+      }
     },
     [registerUser.rejected]: (state) => {
       state.status = "fail";
@@ -72,7 +76,11 @@ export const userSlice = createSlice({
     [loginUser.fulfilled]: (state,action) => {
       state.status = "success";
       state.user = action.payload.user;
-      localStorage.setItem("token",action.payload.token)
+      localStorage.setItem("token",action.payload.token);
+      if(action.payload.user.isAuth){
+        localStorage.setItem("isAuth",action.payload.user.isAuth);
+      }
+
     },
     [loginUser.rejected]: (state) => {
       state.status = "fail";

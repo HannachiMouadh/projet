@@ -1,15 +1,17 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import {Route } from 'react-router-dom';
+import {Route,Redirect  } from 'react-router-dom';
 
 
-const PrivateRouterAdminHome = ({component3,path3}) => {
+const PrivateRouterAdminHome = ({component:Component,...rest}) => {
     const isAuth = localStorage.getItem("token");
-    const user = useSelector((state) => state.user.user);
+    const isAdmin=localStorage.getItem("isAuth");
 
-    if(isAuth && user.isAuth == true){
-       return <Route exact component={component3} path={path3} />;
+
+    if(isAuth &&isAdmin){
+       return <Route  component={Component} {...rest} />;
+    }else{
+      return  <Redirect to="/"/>
     }
 }
 
-export default PrivateRouterAdminHome
+export default PrivateRouterAdminHome;

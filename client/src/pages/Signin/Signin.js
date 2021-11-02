@@ -55,22 +55,15 @@ const Signin = () => {
     password:"",
   });
 
-  const user = useSelector((state) => state.user.user)
-  const isAuth = localStorage.getItem("token");
+  // const user = useSelector((state) => state.user.user)
+  // const isAuth = localStorage.getItem("token");
+  // const isAdmin=localStorage.getItem("isAuth");
 
+  
   const handleLogin=(e)=>{
     e.preventDefault();
     dispatch(loginUser(login));
-      
-    if(isAuth && user.isAuth == true){
-      setTimeout(()=>{
-        history.push("/admin/home");
-       },1000)
-    }else{
-      setTimeout(()=>{
-        history.push("/");
-       },1000)
-    }
+    history.push("/");
   }
   
   return (
@@ -119,9 +112,6 @@ const Signin = () => {
                 onClick={handleLogin}>
                 Connexion
               </Button>
-              {/* <Box mt={5}>
-                <Copyright />
-              </Box> */}
             </form>
           </div>
         </Grid>

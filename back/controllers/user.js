@@ -42,7 +42,7 @@ module.exports = {
                 _id:searchedUser._id,
                 name:searchedUser.name,
             };
-            const token = await jwt.sign(payload,process.env.SecretOrKey,{expiresIn:3600});
+            const token = await jwt.sign(payload,process.env.SecretOrKey);
             res.status(200).send({user:searchedUser,msg:"success",token:`Bearer ${token}`});
         }catch(error){
             console.log(error)

@@ -13,7 +13,6 @@ const Navbar = () => {
     const handlelogout =()=>{
         dispatch(logout());
         history.push('/');
-        window.location.reload(false);
      }
     
     return (
@@ -21,10 +20,11 @@ const Navbar = () => {
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-light">
                     <Link to="/">
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand">
                         <img src="./lg2.gif" />
                     </a>
                     </Link>
+          
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon" />
                     </button>
@@ -32,17 +32,23 @@ const Navbar = () => {
                     <ul className="navbar-nav ml-auto">
                         <Link to="/trajet">
                         <li className="nav-item ">
-                            <a className="nav-link" href="#">Publier un trajet<span className="sr-only" /></a>
+                            <a className="nav-link">Publier un trajet<span className="sr-only" /></a>
                         </li>
                         </Link>
                         {
                             isAuth? 
                                 <ul className="navbar-nav ml-auto">
-                                <li className="nav-item">
-                                    <a className="nav-link" href="#">Mes trajets</a></li>
-                                <li className="nav-item" >
-                                    <a className="nav-link" onClick={handlelogout}>Deconnexion</a>
-                                </li>
+                                    <li className="nav-item">
+                                        <a className="nav-link">Mes trajets</a>
+                                    </li>
+                                    <Link to="/profile">
+                                        <li className="nav-item ">
+                                            <a className="nav-link">Mon Profile<span className="sr-only" /></a>
+                                        </li>
+                                    </Link>
+                                    <li className="nav-item" >
+                                        <a className="nav-link" onClick={handlelogout}>Deconnexion</a>
+                                    </li>
                                 </ul>
                             :
                             <ul className="navbar-nav ml-auto"><Link to='/connexion'>
@@ -52,7 +58,7 @@ const Navbar = () => {
                             </Link>
                             <Link to="/inscription">
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Inscription</a>
+                                    <a className="nav-link">Inscription</a>
                                 </li>
                             </Link></ul>
                         }                    

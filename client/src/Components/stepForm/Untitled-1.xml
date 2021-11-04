@@ -1,0 +1,37 @@
+<Form>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>D’où partez-vous ? <strong>*</strong></Form.Label>
+        <Form.Control type="email" placeholder="D’où partez-vous ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Où voulez-vous aller ? <strong>*</strong></Form.Label>
+        <Form.Control type="email" placeholder="Où voulez-vous aller ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Quelle est votre date de depart ? <strong>*</strong></Form.Label>
+        <Form.Control type="email" placeholder="Quelle est votre date de depart ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Combien de place vous allez accepter ? <strong>*</strong></Form.Label>
+        <Form.Control type="email" placeholder="Combien de place vous allez accepter ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Quelle est votre prix par place ? <strong>*</strong></Form.Label>
+        <Form.Control type="email" placeholder="Quelle est votre prix par place ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Quel est votre model de voiture ? <strong>*</strong></Form.Label>
+        <Form.Control type="password" placeholder="Quel est votre model de voiture ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Quel est votre couleur de voiture ? <strong>*</strong></Form.Label>
+        <Form.Control type="password" placeholder="Quel est votre couleur de voiture ?" />
+    </Form.Group>
+    <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Quel est votre termes ?</Form.Label>
+        <Form.Control type="password" placeholder="Quel est votre termes ?" />
+    </Form.Group>
+    <Button variant="primary" type="submit">
+        Submit
+    </Button>
+</Form>

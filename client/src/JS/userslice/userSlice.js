@@ -11,6 +11,17 @@ export const registerUser = createAsyncThunk("register", async (user) => {
     console.log(error)
   }
 });
+export const updateUser = createAsyncThunk("update", async (id,user) => {
+  try {
+    console.log(user);
+    console.log(id);
+    let result = await axios.put(`http://localhost:5000/api/user/${id}`,user);
+
+    return result.data;
+  } catch (error) {
+    console.log(error)
+  }
+});
 
 export const loginUser = createAsyncThunk("login", async (user) => {
   try {
@@ -93,6 +104,15 @@ export const userSlice = createSlice({
       state.user = action.payload.user;
     },
     [currentUser.rejected]: (state) => {
+      state.status = "failed";
+    },
+    [updateUser.pending]: (state) => {
+      state.status = "pending";
+    },
+    [updateUser.fulfilled]: (state,action) => {
+      state.status = "success";
+    },
+    [updateUser.rejected]: (state) => {
       state.status = "failed";
     },
   },

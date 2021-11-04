@@ -3,31 +3,37 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const Nbrpassager = ({ formData, setForm, navigation }) => {
-    const { nombredepassage } = formData;
-
+const Nbrpassager = ({Data,setData,navigation }) => {
     return (
-        <Container maxWidth="xs">
-      <h3>Names</h3>
+        <Container maxWidth="xs" style={{ marginTop: '7%',marginBottom: '12%' }}>
+      <h3>Combien de place vous allez accepter ?</h3>
       <TextField
-        label="First Name"
-        name="nombredepassage"
-        value={nombredepassage}
+        label="Combien de place vous allez accepter ?"
+        name="Combien de place vous allez accepter ?"
+        onChange={(e)=>{setData({...Data,nombredepassage:e.target.value})}}
         margin="normal"
         variant="outlined"
         autoComplete="off"
         fullWidth
       />
      
-      <Button
-        variant="contained"
-        fullWidth
-        color="primary"
-        style={{ marginTop: "1rem" }}
-        onClick={() => navigation.next()}
-      >
-        Next
-      </Button>
+     <div style={{ marginTop: "1rem" }}>
+        <Button
+          color="secondary"
+          variant="contained"
+          style={{ marginRight: "1rem" }}
+          onClick={() => navigation.previous()}
+        >
+          Precedent
+        </Button>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={() => navigation.next()}
+        >
+          Suivant
+        </Button>
+      </div>
     </Container>
     )
 }

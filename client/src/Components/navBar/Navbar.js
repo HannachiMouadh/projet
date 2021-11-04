@@ -1,10 +1,11 @@
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
 import { logout } from "../../JS/userslice/userSlice";
 import './nav.css'
 import { Link } from 'react-router-dom';
+import $ from 'jquery';
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -14,60 +15,48 @@ const Navbar = () => {
         dispatch(logout());
         history.push('/');
      }
+     useEffect(() => {
+        $(window).on('scroll',function(){
+            if($(window).scrollTop()){
+              $('nav').addClass('black');
+            }else {
+              $('nav').removeClass('black');
+            }
+          })
+     }, [])
     
     return (
-        <div className="banner">
-            <div className="container">
-                <nav className="navbar navbar-expand-lg navbar-light">
-                    <Link to="/">
-                    <a className="navbar-brand">
-                        <img src="./lg2.gif" />
-                    </a>
-                    </Link>
-          
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon" />
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul className="navbar-nav ml-auto">
-                        <Link to="/trajet">
-                        <li className="nav-item ">
-                            <a className="nav-link">Publier un trajet<span className="sr-only" /></a>
-                        </li>
-                        </Link>
-                        {
-                            isAuth? 
-                                <ul className="navbar-nav ml-auto">
-                                    <li className="nav-item">
-                                        <a className="nav-link">Mes trajets</a>
-                                    </li>
-                                    <Link to="/profile">
-                                        <li className="nav-item ">
-                                            <a className="nav-link">Mon Profile<span className="sr-only" /></a>
-                                        </li>
-                                    </Link>
-                                    <li className="nav-item" >
-                                        <a className="nav-link" onClick={handlelogout}>Deconnexion</a>
-                                    </li>
-                                </ul>
-                            :
-                            <ul className="navbar-nav ml-auto"><Link to='/connexion'>
-                                <li className="nav-item">
-                                    <a className="nav-link">Connexion</a>
-                                </li>
-                            </Link>
-                            <Link to="/inscription">
-                                <li className="nav-item">
-                                    <a className="nav-link">Inscription</a>
-                                </li>
-                            </Link></ul>
-                        }                    
-                    </ul>   
-                    </div>
-                </nav>
+        <nav>
+            <div className="logo">
+                <Link to="/">
+                    <img src="./lg2.gif" />
+                </Link>
             </div>
-        </div>
-    )
+            <ul>
+                <Link to="/trajet">
+                    <li>Publier un trajet</li>
+                </Link>
+                {isAuth? 
+                    <ul>
+                        <li>Mes trajets</li>
+                        <Link to="/profile">
+                            <li>Mon Profile</li>
+                        </Link>
+                        <li onClick={handlelogout}>Deconnexion</li>
+                    </ul>
+                    :
+                    <ul>
+                        <Link to='/connexion'>
+                            <li>Connexion</li>
+                        </Link>
+                        <Link to="/inscription">
+                            <li>Inscription</li>
+                        </Link>
+                    </ul>
+                }                    
+            </ul>   
+        </nav>
+    );
 }
 
 export default Navbar;

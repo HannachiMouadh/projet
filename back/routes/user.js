@@ -20,4 +20,10 @@ router.post("/login", loginRules(),validation,controllers.login);
 // current
 router.get("/current",isAuth(),controllers.current);
 
+//@Methode PUT
+//@desc update one contact by id
+//@Path:http://localhost:5000/api/contact/:id
+//@Params id Body
+router.put("/:id",controllers.update);
+
 module.exports = router;

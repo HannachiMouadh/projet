@@ -1,21 +1,27 @@
 import React from 'react';
 import Container from "@material-ui/core/Container";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Textarea } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+import AddTrajet from '../../pages/addTrajet/AddTrajet';
 
-const Prixpass = ({ Data, setData, navigation }) => {
+const Description = ({Data,setData,navigation }) => {
+  const dispatch = useDispatch();
+  const handleAdd =()=>{
+    dispatch(AddTrajet(Data));
+navigation.next()
+  }
     return (
-      <Container maxWidth="xs" style={{ marginTop: '7%',marginBottom: '12%' }}>
-        <h3>Quelle est votre prix par place ?</h3>
-        <TextField
-          label="Quelle est votre prix par place ?"
-          name="Quelle est votre prix par place ?"
-          onChange={(e)=>{setData({...Data,prix:e.target.value})}}
+        <Container style={{ marginTop: '7%',marginBottom: '12%' }} maxWidth="xs">
+        <h3>Quel est votre termes ?</h3>
+        <textarea
+          label="Last Name"
+          name="description"
+          onChange={(e)=>{setData({...Data,description:e.target.value})}}
           margin="normal"
           variant="outlined"
           autoComplete="off"
           fullWidth
-          type="N"
         />
         <div style={{ marginTop: "1rem" }}>
           <Button
@@ -29,13 +35,13 @@ const Prixpass = ({ Data, setData, navigation }) => {
           <Button
             color="primary"
             variant="contained"
-            onClick={() => navigation.next()}
+            onClick={handleAdd}
           >
-            Next
+            Ajouter
           </Button>
         </div>
       </Container>
     )
 }
 
-export default Prixpass
+export default Description

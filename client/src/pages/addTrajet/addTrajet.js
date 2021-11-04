@@ -7,20 +7,17 @@ import Date_dep from '../../Components/stepForm/Date_dep';
 import Nbrpassager from '../../Components/stepForm/Nbrpassager';
 import Prixpass from '../../Components/stepForm/Prixpass';
 import Voiture from '../../Components/stepForm/Voiture';
+import CouleurVoiture from '../../Components/stepForm/CouleurVoiture';
+import Description from '../../Components/stepForm/Description';
+import Submit from "../../Components/stepForm/Submit";
+import { useDispatch, useSelector } from 'react-redux'
 
 
-const defaultData = {
-  depart: "",
-  arrive: "",
-  date_dep: "",
-  nombredepassage: "",
-  prix: "",
-  description: "",
-  modelvoiture: "",
-  couleurvoiture: "",
-  createdBy:""
-};
 
+
+const AddTrajet = () => {
+  // const user = useSelector((state) => state.user.user);
+  
 const steps = [
   { id: "Depart" },
   { id: "Arrive" },
@@ -28,17 +25,33 @@ const steps = [
   { id: "Nbrpassager" },
   { id: "Prixpass" },
   { id: "Voiture" },
+  { id: "CouleurVoiture" },
+  { id: "Description" },
+  { id: "Submit" },
 ];
-const AddTrajet = () => {
 
+  const [Data, setData] = useState({
+    depart: "",
+    arrive: "",
+    date_dep: "",
+    nombredepassage: "",
+    prix: "",
+    modelvoiture: "",
+    couleurvoiture: "",
+    description: "",
+    createdBy:''
+  })
 
-  const [formData, setForm] = useForm(defaultData);
+  // useEffect(() => {
+  //  setData({...Data,createdBy:user?._id})
+  // }, [])
+
   const { step, navigation } = useStep({
     steps,
     initialStep: 0,
   });
 
-  const props = { formData, setForm, navigation };
+  const props = { Data, setData, navigation };
 
   switch (step.id) {
     case "Depart":
@@ -53,6 +66,13 @@ const AddTrajet = () => {
       return <Prixpass {...props} />;
     case "Voiture":
       return <Voiture {...props} />;
+    case "CouleurVoiture":
+      return <CouleurVoiture {...props} />;
+    case "Description":
+      return <Description {...props}  />;
+    case "Submit":
+      return <Submit  {...props} />;
+      
   }
     return(
         <div>

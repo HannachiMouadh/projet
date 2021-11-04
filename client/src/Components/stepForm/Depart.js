@@ -3,15 +3,15 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const Depart = ({ formData, setForm, navigation }) => {
-    const { depart } = formData;
+const Depart = ({Data,setData,navigation }) => {
+  
     return (
-        <Container maxWidth="xs">
-        <h3>D’où partez-vous ?</h3>
+        <Container style={{ marginTop: '5%',marginBottom: '12%' }} maxWidth="xs">
+        <h3 className="text-center">D’où partez-vous ?</h3>
         <TextField
             label="D’où partez-vous ?"
             name="depart"
-            value={depart}
+            onChange={(e)=>{setData({...Data,depart:e.target.value})}}
             margin="normal"
             variant="outlined"
             autoComplete="off"
@@ -24,7 +24,7 @@ const Depart = ({ formData, setForm, navigation }) => {
             style={{ marginTop: "1rem" }}
             onClick={() => navigation.next()}
             >
-                Next
+            Suivant
         </Button>
         </Container>
     )

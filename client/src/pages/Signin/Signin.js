@@ -19,7 +19,7 @@ const Signin = () => {
       height: "100vh",
     },
     image: {
-      backgroundImage: "url(https://source.unsplash.com/WLUHO9A_xik/1600x900)",
+      backgroundImage: "url(https://source.unsplash.com/WLUHO9A_xik/200x200)",
       backgroundRepeat: "no-repeat",
       backgroundColor:
         theme.palette.type === "light"

@@ -61,9 +61,8 @@ const  App = () => {
             <Route path="/inscription" component={SignUp}/>
             <Route path="/message" component={Message}/>
             <PrivateRouterAdminHome path="/admin/home" component={HomeAdmin} />
-
             <PrivateRoute path="/trajet" component={AddTrajet}/>
-            <PrivateRouteProfile path="/profile" component={Profile}  />
+            <PrivateRouteProfile  component={Profile} path="/profile"/>
           </Switch>
           {footerAuth()} 
       </div>

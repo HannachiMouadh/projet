@@ -3,19 +3,18 @@ import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
-const Prixpass = ({ Data, setData, navigation }) => {
+const CouleurVoiture = ({ Data,setData, navigation }) => {
     return (
-      <Container maxWidth="xs" style={{ marginTop: '7%',marginBottom: '12%' }}>
-        <h3>Quelle est votre prix par place ?</h3>
+        <Container maxWidth="xs" style={{ marginTop: '7%',marginBottom: '12%' }}>
+        <h3>Quel est votre couleur de voiture ?</h3>
         <TextField
-          label="Quelle est votre prix par place ?"
-          name="Quelle est votre prix par place ?"
-          onChange={(e)=>{setData({...Data,prix:e.target.value})}}
+          label="Last Name"
+          name="couleurvoiture"
+          onChange={(e)=>{setData({...Data,couleurvoiture:e.target.value})}}
           margin="normal"
           variant="outlined"
           autoComplete="off"
           fullWidth
-          type="N"
         />
         <div style={{ marginTop: "1rem" }}>
           <Button
@@ -38,4 +37,4 @@ const Prixpass = ({ Data, setData, navigation }) => {
     )
 }
 
-export default Prixpass
+export default CouleurVoiture

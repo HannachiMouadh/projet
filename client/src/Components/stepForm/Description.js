@@ -9,12 +9,13 @@ const Description = ({Data,setData,navigation }) => {
   const dispatch = useDispatch();
   const handleAdd =()=>{
     dispatch(AddTrajet(Data));
-navigation.next()
+    
   }
     return (
         <Container style={{ marginTop: '7%',marginBottom: '12%' }} maxWidth="xs">
         <h3>Quel est votre termes ?</h3>
         <textarea
+          className="form-control"
           label="Last Name"
           name="description"
           onChange={(e)=>{setData({...Data,description:e.target.value})}}
@@ -30,13 +31,12 @@ navigation.next()
             style={{ marginRight: "1rem" }}
             onClick={() => navigation.previous()}
           >
-            Back
+            précedent
           </Button>
           <Button
             color="primary"
             variant="contained"
-            onClick={handleAdd}
-          >
+            onClick={()=>{handleAdd();navigation.next()}}>
             Ajouter
           </Button>
         </div>
@@ -44,4 +44,4 @@ navigation.next()
     )
 }
 
-export default Description
+export default Description;

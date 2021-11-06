@@ -59,7 +59,11 @@ export default function SignUp() {
   const handleRegister =(e)=>{
     e.preventDefault();
     dispatch(registerUser(register));
-    history.push('/');
+    if(localStorage.getItem("token")){
+      history.push('/profile');
+      window.location.reload()
+    }
+
 
   }
   return (

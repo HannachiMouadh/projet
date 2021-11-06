@@ -50,13 +50,13 @@ module.exports = {
         }
     },
     
-    current :(req,res)=>{
+    current :async(req,res) =>{
         res.status(200).send({user:req.user});
     },
 
     update : async(req,res) => {
         try{
-          const result=await User.findByIdAndUpdate({_id:req.params.id},{$set:{...req.body}})
+          const result= await User.findByIdAndUpdate({_id:req.params.id},{$set:{...req.body}})
           res.send("user updated")
         }catch(error){
             res.status(400).send({message:"No user with this id"})

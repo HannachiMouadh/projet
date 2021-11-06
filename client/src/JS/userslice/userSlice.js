@@ -11,12 +11,11 @@ export const registerUser = createAsyncThunk("register", async (user) => {
     console.log(error)
   }
 });
-export const updateUser = createAsyncThunk("update", async (id,user) => {
+
+export const updateUser = createAsyncThunk("update", async (user) => {
   try {
     console.log(user);
-    console.log(id);
-    let result = await axios.put(`http://localhost:5000/api/user/${id}`,user);
-
+    let result = await axios.put(`http://localhost:5000/api/user/${user._id}`,user);
     return result.data;
   } catch (error) {
     console.log(error)

@@ -14,6 +14,7 @@ const Navbar = () => {
     const handlelogout =()=>{
         dispatch(logout());
         history.push('/');
+        window.location.reload()
      }
      useEffect(() => {
         $(window).on('scroll',function(){

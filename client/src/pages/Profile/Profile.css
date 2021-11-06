@@ -52,3 +52,15 @@
     object-fit: cover;
     border:9px solid rgb(197, 197, 197)
   }
+
+  b{
+    color: red;
+    font-weight: bold;
+    font-size: 18px;
+  }
+
+  Form{
+    width:65%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }

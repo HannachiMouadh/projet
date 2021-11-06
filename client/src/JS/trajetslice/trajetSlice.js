@@ -12,6 +12,15 @@ export const ajouterTrajet = createAsyncThunk("Ajouter", async (trajet) => {
   }
 });
 
+export const getAllTrajets = createAsyncThunk("getAllTrajets", async () => {
+  try {
+    const result = await axios.get("http://localhost:5000/api/trajet/");
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 // export const modifierTrajet = createAsyncThunk("login", async (user) => {
 //   try {
 //     const result = await axios.post("http://localhost:5000/api/trajet/",user);
@@ -58,6 +67,16 @@ export const trajetSlice = createSlice({
       state.trajet = action.payload.response;
     },
     [ajouterTrajet.rejected]: (state) => {
+      state.status = "fail";
+    },
+    [getAllTrajets.pending]: (state) => {
+      state.status = "pending";
+    },
+    [getAllTrajets.fulfilled]: (state,action) => {
+      state.status = "success";
+      state.trajet = action.payload.response;
+    },
+    [getAllTrajets.rejected]: (state) => {
       state.status = "fail";
     },
   },

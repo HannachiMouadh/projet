@@ -39,7 +39,9 @@ const Navbar = () => {
                 </Link>
                 {isAuth? 
                     <ul>
-                        <li>Mes trajets</li>
+                        <Link to="/mestrajets">
+                            <li>Mes trajets</li>
+                        </Link>
                         <Link to="/profile">
                             <li>Mon Profile</li>
                         </Link>

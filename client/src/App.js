@@ -18,6 +18,8 @@ import Navbar from './Components/navBar/Navbar';
 import Footer from './Components/footer/Footer';
 import Header from './Components/AdminComponents/Header';
 import SideNav from './Components/AdminComponents/SideNav';
+import PrivateRouteListTrajets from './Components/router/PrivateRouteListTrajets';
+import ListtTrajets from './pages/ListTrajets/ListtTrajets';
 
 
 const  App = () => {
@@ -63,6 +65,7 @@ const  App = () => {
             <PrivateRouterAdminHome path="/admin/home" component={HomeAdmin} />
             <PrivateRoute path="/trajet" component={AddTrajet}/>
             <PrivateRouteProfile  component={Profile} path="/profile"/>
+            <PrivateRouteListTrajets component={ListtTrajets} path="/mestrajets"/>
           </Switch>
           {footerAuth()} 
       </div>

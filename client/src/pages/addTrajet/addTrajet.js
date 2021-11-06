@@ -2,12 +2,27 @@ import React, { useEffect, useState } from "react";
 import './addTrajet.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { ajouterTrajet } from "../../JS/trajetslice/trajetSlice";
+import { Alert } from "react-bootstrap";
 
 
 const AddTrajet = () => {
 
- useEffect(() => {
 
+
+ const userRedux = useSelector((state) => state.user.user);
+ const [Data,setData] = useState({
+  depart: "",
+  arrive: "",
+  date_dep: "",
+  nombredepassage: "",
+  prix: "",
+  modelvoiture: "",
+  couleurvoiture: "",
+  description: "",
+  createdBy:''
+});
+useEffect(() => {
+  setData({...Data,createdBy:userRedux?._id})
   const slidePage = document.querySelector(".slide-page");
   const nextBtnFirst = document.querySelector(".firstNext");
   const prevBtnSec = document.querySelector(".prev-1");
@@ -15,7 +30,7 @@ const AddTrajet = () => {
   const prevBtnThird = document.querySelector(".prev-2");
   const nextBtnThird = document.querySelector(".next-2");
   const prevBtnFourth = document.querySelector(".prev-3");
-  const submitBtn = document.querySelector(".submit");
+  // const submitBtn = document.querySelector(".submit");
   const progressText = document.querySelectorAll(".step p");
   const progressCheck = document.querySelectorAll(".step .check");
   const bullet = document.querySelectorAll(".step .bullet");
@@ -37,6 +52,7 @@ const AddTrajet = () => {
     progressText[current - 1].classList.add("active");
     current += 1;
   });
+
   nextBtnThird.addEventListener("click", function(event){
     event.preventDefault();
     slidePage.style.marginLeft = "-75%";
@@ -45,6 +61,7 @@ const AddTrajet = () => {
     progressText[current - 1].classList.add("active");
     current += 1;
   });
+
   // submitBtn.addEventListener("click", function(){
   //   bullet[current - 1].classList.add("active");
   //   progressCheck[current - 1].classList.add("active");
@@ -79,23 +96,14 @@ const AddTrajet = () => {
     progressText[current - 2].classList.remove("active");
     current -= 1;
   });
- }, []);
-
- const [Data,setData] = useState({
-  depart: "",
-  arrive: "",
-  date_dep: "",
-  nombredepassage: "",
-  prix: "",
-  modelvoiture: "",
-  couleurvoiture: "",
-  description: "",
-  createdBy:''
-});
-
+ }, [userRedux]);
 const dispatch = useDispatch()
-const handleadd =()=>{
+const handleadd =(e)=>{
+  e.preventDefault()
   dispatch(ajouterTrajet(Data));
+  <Alert variant="success">
+    Votre trahet est ajouté
+  </Alert>
 
 }
   
@@ -157,7 +165,7 @@ const handleadd =()=>{
                   <input type="text"  onChange={(e)=>setData({...Data,arrive:e.target.value})}/>
                 </div>
                 <div className="field">
-                  <button className="firstNext next">Next</button>
+                  <button className="firstNext next">Suivant</button>
                 </div>
               </div>
               <div className="page">
@@ -169,13 +177,13 @@ const handleadd =()=>{
                 </div>
                 <div className="field">
                   <div className="label">
-                    Quelle nombre de places allez vous acceptées :
+                    Quelle est le nombre de places  :
                   </div>
                   <input type="Number" onChange={(e)=>setData({...Data,nombredepassage:e.target.value})} />
                 </div>
                 <div className="field btns">
-                  <button className="prev-1 prev">Previous</button>
-                  <button className="next-1 next">Next</button>
+                  <button className="prev-1 prev">Précédent</button>
+                  <button className="next-1 next">Suivant</button>
                 </div>
               </div>
               <div className="page">
@@ -192,8 +200,8 @@ const handleadd =()=>{
                   <input type="text" onChange={(e)=>setData({...Data,modelvoiture:e.target.value})}/>
                 </div>
                 <div className="field btns">
-                  <button className="prev-2 prev">Previous</button>
-                  <button className="next-2 next">Next</button>
+                  <button className="prev-2 prev">Précédent</button>
+                  <button className="next-2 next">Suivant</button>
                 </div>
               </div>
               <div className="page">
@@ -210,8 +218,8 @@ const handleadd =()=>{
                   <textarea  type="text" onChange={(e)=>setData({...Data,description:e.target.value})}/>
                 </div>
                 <div className="field btns">
-                  <button className="prev-3 prev">Previous</button>
-                  <button className="submit" onClick={handleadd}>Enregistrer</button>
+                  <button className="prev-3 prev">Précédent</button>
+                  <button  onClick={handleadd}>Enregistrer</button>
                 </div>
               </div>
             </form>

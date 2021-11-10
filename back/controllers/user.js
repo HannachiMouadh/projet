@@ -62,5 +62,13 @@ module.exports = {
             res.status(400).send({message:"No user with this id"})
         }
     },
+    getAll : async(req,res)=>{
+        try{
+            const result = await User.find()
+            res.send({response:result,message:"Geting Users successful"})
+        }catch(error){
+            res.status(400).send({message:"Can not get Users"})
+        }
+    },
 
 }

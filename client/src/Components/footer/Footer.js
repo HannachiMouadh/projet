@@ -9,11 +9,10 @@ const Footer = () => {
           <MDBCol md="6">
             <h5 className="title">Footer Content</h5>
             <p>
-              Here you can use rows and columns here to organize your footer
-              content.
+            Tawsila est le premier réseau de voyage communautaire en Tunisie. Où que vous alliez, en bus ou en covoiturage, trouvez le trajet idéal parmi notre large choix de destinations à petits prix.
             </p>
           </MDBCol>
-          <MDBCol md="6">
+          <MDBCol md="4">
             <h5 className="title">Links</h5>
             <ul>
               <li className="list-unstyled">
@@ -34,7 +33,7 @@ const Footer = () => {
       </MDBContainer>
       <div className="footer-copyright text-center py-3">
         <MDBContainer fluid>
-          &copy; {new Date().getFullYear()} Copyright: <a href="https://www.mdbootstrap.com"> MDBootstrap.com </a>
+          &copy; {new Date().getFullYear()} Copyright
         </MDBContainer>
       </div>
     </MDBFooter>

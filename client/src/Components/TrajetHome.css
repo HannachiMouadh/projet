@@ -1,0 +1,37 @@
+
+.trajet-card{
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 5px;
+    margin-top: 40px;
+    display: flex;
+    }
+
+.trajet-row{
+    padding:12px 32px;
+}
+.trajet-row i{
+    color: rgb(212, 200, 26);
+    padding-right: 5px;
+}
+.trajet-row span{
+font-weight: bold;
+color: gray;
+}
+
+
+.trajet-body{
+    display: flex;
+    flex-direction: column  ;
+}
+.image{
+    width: 150px;
+    height: 150px;
+    background-color: rgba(111, 111, 233, 0.226);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(68, 166, 211);
+    font-size: 2em;
+}

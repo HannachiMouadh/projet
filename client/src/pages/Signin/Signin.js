@@ -55,16 +55,13 @@ const Signin = () => {
     password:"",
   });
 
-  // const user = useSelector((state) => state.user.user)
-  // const isAuth = localStorage.getItem("token");
-  // const isAdmin=localStorage.getItem("isAuth");
-
-  
   const handleLogin=(e)=>{
     e.preventDefault();
     dispatch(loginUser(login));
-    history.push("/");
-  }
+      setTimeout(()=>{
+        history.push("/");
+      },1000)
+  };
   
   return (
     <div>

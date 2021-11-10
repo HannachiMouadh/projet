@@ -21,38 +21,31 @@ export const getAllTrajets = createAsyncThunk("getAllTrajets", async () => {
   }
 });
 
-// export const modifierTrajet = createAsyncThunk("login", async (user) => {
-//   try {
-//     const result = await axios.post("http://localhost:5000/api/trajet/",user);
-//     return result.data;
-//   } catch (error) {
-//     console.log(error)
-//   }
-// });
+export const deleteTrajet = createAsyncThunk("trajet/dalete", async (id) => {
+  try {
+    const result = await axios.delete(`http://localhost:5000/api/trajet/${id}`);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
-// export const currentUser = createAsyncThunk("current", async () => {
-//   let opts ={
-//     headers:{
-//       Authorization:localStorage.getItem("token"),
-//     },
-//   };
-//   try {
-//     const result = await axios.get("http://localhost:5000/api/user/current",opts);
-//     return result.data;
-//     console.log(result.data)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// });
+
+export const modifierTrajet = createAsyncThunk("modifier/trajet",async ( trajet) => {
+    try {
+      const result = await axios.put(`http://localhost:5000/api/trajet/${trajet._id}`, trajet);
+      return result.data;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+);
 
 
 const initialState = {
   trajet: null,
   status: null,
 };
-
-
-
 
 export const trajetSlice = createSlice({
   name: "trajet",
@@ -79,9 +72,26 @@ export const trajetSlice = createSlice({
     [getAllTrajets.rejected]: (state) => {
       state.status = "fail";
     },
+    [modifierTrajet.pending]: (state) => {
+      state.status = "pending";
+    },
+    [modifierTrajet.fulfilled]: (state,action) => {
+      state.status = "success";
+    },
+    [modifierTrajet.rejected]: (state) => {
+      state.status = "fail";
+    },
+    [deleteTrajet.pending]: (state) => {
+      state.status = "pending";
+    },
+    [deleteTrajet.fulfilled]: (state,action) => {
+      state.status = "success";
+    },
+    [deleteTrajet.rejected]: (state) => {
+      state.status = "fail";
+    },
   },
 });
 
-// export const {logout} = userSlice.actions;
 
 export default trajetSlice.reducer;

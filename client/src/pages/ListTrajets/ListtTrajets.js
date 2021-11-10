@@ -6,7 +6,6 @@ import './listtrajets.css'
 
 const ListtTrajets = () => {
     const dispatch = useDispatch()
-
     useEffect(() => {
        dispatch(getAllTrajets());
     }, [])
@@ -15,39 +14,11 @@ const ListtTrajets = () => {
 
     return (
         <div className="listtrajets">
-            <table id="example2" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>
-                    <th>Depart</th>
-                    <th>Arrivée </th>
-                    <th>Date de depart</th>
-                    <th>Nombre de places</th>
-                    <th>Prix par place en (DT)</th>
-                    <th>Model de voiture</th>
-                    <th>Couleur de voiture</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-            {trajetRedux?.filter(el=>el.createdBy === userRedux?._id).map((el)=>(<Trajet trajet={el}/>))}
-            </tbody>
-            <tfoot>
-                  <tr>
-                    <th>Depart</th>
-                    <th>Arrivée </th>
-                    <th>Date de depart</th>
-                    <th>Nombre de places</th>
-                    <th>Prix par place en (DT)</th>
-                    <th>Model de voiture</th>
-                    <th>Couleur de voiture</th>
-                    <th>Description</th>
-                    <th>Actions</th>
-                  </tr>
-                  </tfoot>
-                </table>
+          {trajetRedux? (trajetRedux.filter(el=>el.createdBy === userRedux?._id).map((el)=>(<Trajet trajet={el}/>))):(
+            <h1>Loading ....</h1>
+          )}
         </div>
     )
 }
 
-export default ListtTrajets
+export default ListtTrajets;

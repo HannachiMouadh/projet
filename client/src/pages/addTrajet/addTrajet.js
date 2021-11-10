@@ -7,8 +7,6 @@ import { Alert } from "react-bootstrap";
 
 const AddTrajet = () => {
 
-
-
  const userRedux = useSelector((state) => state.user.user);
  const [Data,setData] = useState({
   depart: "",
@@ -97,18 +95,16 @@ useEffect(() => {
     current -= 1;
   });
  }, [userRedux]);
+
 const dispatch = useDispatch()
 const handleadd =(e)=>{
   e.preventDefault()
   dispatch(ajouterTrajet(Data));
-  <Alert variant="success">
-    Votre trahet est ajouté
-  </Alert>
-
+  window.location.reload();
 }
   
   return(
-    <div className="body">
+    <div className="bddd">
       <div className="container">
           <header>Ajouter une trajet</header>
           <div className="progress-bar">
@@ -156,7 +152,7 @@ const handleadd =(e)=>{
                   <div className="label">
                     Quelle est votre point de depart :
                   </div>
-                  <input type="text" onChange={(e)=>setData({...Data,depart:e.target.value})} />
+                  <input type="text" onChange={(e)=>setData({...Data,depart:e.target.value})} minLength="6" maxLength="8" required="required"/>
                 </div>
                 <div className="field">
                   <div className="label">
@@ -224,8 +220,7 @@ const handleadd =(e)=>{
               </div>
             </form>
           </div>
-        </div>
-
+      </div>
     </div>
   )
 

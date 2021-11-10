@@ -47,13 +47,19 @@ export const currentUser = createAsyncThunk("current", async () => {
 });
 
 
+export const getAllUsers = createAsyncThunk("getAllUsers", async () => {
+  try {
+    const result = await axios.get("http://localhost:5000/api/user/");
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 const initialState = {
   user: null,
   status: null,
+  users:null
 };
-
-
-
 
 export const userSlice = createSlice({
   name: "user",
@@ -112,6 +118,16 @@ export const userSlice = createSlice({
       state.status = "success";
     },
     [updateUser.rejected]: (state) => {
+      state.status = "failed";
+    },
+    [getAllUsers.pending]: (state) => {
+      state.status = "pending";
+    },
+    [getAllUsers.fulfilled]: (state,action) => {
+      state.status = "success";
+      state.users = action.payload.response;
+    },
+    [getAllUsers.rejected]: (state) => {
       state.status = "failed";
     },
   },

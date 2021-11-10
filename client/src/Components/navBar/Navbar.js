@@ -11,6 +11,8 @@ const Navbar = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const isAuth = localStorage.getItem("token");
+    const isAdmin = localStorage.getItem("isAuth");
+
     const handlelogout =()=>{
         dispatch(logout());
         history.push('/');
@@ -30,13 +32,19 @@ const Navbar = () => {
         <nav>
             <div className="logo">
                 <Link to="/">
-                    <img src="./lg2.gif" />
+                    <img src={process.env.PUBLIC_URL +"/lg2.gif"} />
                 </Link>
             </div>
             <ul>
                 <Link to="/trajet">
                     <li>Publier un trajet</li>
                 </Link>
+                {isAdmin?<ul>
+
+                    <Link to="/admin/home"><li>Dashboard</li></Link>
+                </ul>:null
+
+                }
                 {isAuth? 
                     <ul>
                         <Link to="/mestrajets">

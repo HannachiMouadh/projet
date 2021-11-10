@@ -26,4 +26,9 @@ router.get("/current",isAuth(),controllers.current);
 //@Params id Body
 router.put("/:id",controllers.update);
 
+//@Methode GET
+//@desc GET all trajets
+//@Path:http://localhost:5000/api/trajet
+router.get("/",controllers.getAll);
+
 module.exports = router;

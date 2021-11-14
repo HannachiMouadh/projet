@@ -31,4 +31,7 @@ router.put("/:id",controllers.update);
 //@Path:http://localhost:5000/api/trajet
 router.get("/",controllers.getAll);
 
+
+router.delete("/:id",controllers.delete);
+
 module.exports = router;

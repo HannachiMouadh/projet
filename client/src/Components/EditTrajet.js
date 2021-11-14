@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { modifierTrajet } from "../JS/trajetslice/trajetSlice";
 
 const EditTrajet = ({ tj }) => {
-  const [show, setShow] = useState(false);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [Data,setData] = useState({
-    depart: "",
-    arrive: "",
-    date_dep: "",
-    nombredepassage: "",
-    prix: "",
-    modelvoiture: "",
-    couleurvoiture: "",
-    description: "",
+    depart:"",
+    arrive:"",
+    date_dep:"",
+    nombredepassage:"",
+    prix:"",
+    modelvoiture:"",
+    couleurvoiture:"",
+    description:"",
     createdBy:''
   });
   useEffect(() => {
      setData(tj);
-  }, [])
+  }, []);
   return (
     <div>
       <Button variant='success' onClick={handleShow}>
@@ -83,19 +83,17 @@ const EditTrajet = ({ tj }) => {
           />
           <label>Description de trajet :</label>
           <textarea
-          className="form-control"
-          value={Data.description}
-            onChange={(e) => setData({ ...Data, description: e.target.value })}
-          ></textarea>
+            className="form-control"
+            value={Data.description}
+            onChange={(e) => setData({ ...Data, description: e.target.value })}></textarea>
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
-            Close
+            Fermer
           </Button>
           <Button
             variant='primary'
-            onClick={() => {dispatch(modifierTrajet(Data));handleClose();window.location.reload()}}
-          >
+            onClick={() => {dispatch(modifierTrajet(Data));handleClose();window.location.reload()}}>
             Save Changes
           </Button>
         </Modal.Footer>

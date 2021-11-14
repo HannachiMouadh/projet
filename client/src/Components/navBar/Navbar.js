@@ -1,6 +1,6 @@
 import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core';
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { logout } from "../../JS/userslice/userSlice";
 import './nav.css'
@@ -12,6 +12,8 @@ const Navbar = () => {
     const history = useHistory();
     const isAuth = localStorage.getItem("token");
     const isAdmin = localStorage.getItem("isAuth");
+    const userRedux = useSelector((state) => state.user.user);
+
 
     const handlelogout =()=>{
         dispatch(logout());
@@ -39,9 +41,9 @@ const Navbar = () => {
                 <Link to="/trajet">
                     <li>Publier un trajet</li>
                 </Link>
-                {isAdmin?<ul>
-
-                    <Link to="/admin/home"><li>Dashboard</li></Link>
+                {isAdmin?
+                <ul>
+                    <Link to="/admin/home/"><li>Dashboard</li></Link>
                 </ul>:null
 
                 }
@@ -53,7 +55,8 @@ const Navbar = () => {
                         <Link to="/profile">
                             <li>Mon Profile</li>
                         </Link>
-                        <li onClick={handlelogout}>Deconnexion</li>
+                        <Link><li onClick={handlelogout}>Deconnexion</li></Link>
+                        <li className="iimgg"><img className="imgg" src={userRedux?.image?`http://localhost:5000${userRedux?.image}`: null}/></li>
                     </ul>
                     :
                     <ul>

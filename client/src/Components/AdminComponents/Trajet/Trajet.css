@@ -1,15 +1,14 @@
-
 .trajet-card{
-    width: 80%;
+    width: 85%;
     margin: 0 auto;
     border: 1px solid rgb(216, 216, 216);
     border-radius: 5px;
-    margin-top: 40px;
+    margin: 30px;
     display: flex;
     justify-content: space-between;
     padding: 5px;
     height: 210px;
-    }
+}
 
 .trajet-row{
     padding:10px;

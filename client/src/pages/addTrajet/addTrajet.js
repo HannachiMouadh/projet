@@ -105,7 +105,7 @@ const handleadd =(e)=>{
   
   return(
     <div className="bddd">
-      <div className="container">
+      <div className="container col-md-12">
           <header>Ajouter une trajet</header>
           <div className="progress-bar">
             <div className="step">

@@ -11,24 +11,25 @@ import AddTrajet from './pages/addTrajet/AddTrajet';
 import Profile from './pages/Profile/Profile';
 import Message from './Components/message/Message';
 import PrivateRouteProfile from './Components/router/PrivateRouteProfile';
-import PrivateRouterAdminHome from './Components/router/PrivateRouterAdminHome';
 import Navbar from './Components/navBar/Navbar';
 import Footer from './Components/footer/Footer';
 import PrivateRouteListTrajets from './Components/router/PrivateRouteListTrajets';
-import ListtTrajets from './pages/ListTrajets/ListtTrajets';
-import AdminHome from './pages/pagesAdmin/AdminHome/AdminHome';
 import UsersList from './pages/pagesAdmin/UsersList/UsersList';
+import { getAllTrajets } from './JS/trajetslice/trajetSlice';
+import ListTrajets from './Components/AdminComponents/listTrajets/ListTrajets';
+import ListtTrajets from './pages/ListTrajets/ListtTrajets';
+import PrivateRouteUserList from './Components/router/PrivateRouteUserList'
 
 
 const  App = () => {
 
   const dispatch = useDispatch();
   const isAuth = localStorage.getItem("token");
-  const isAdmin = localStorage.getItem("isAuth");
 
   useEffect(() => {
     if(isAuth){dispatch(currentUser());
-      dispatch(getAllUsers())
+      dispatch(getAllUsers());
+      dispatch(getAllTrajets());
     }
   }, []);
     
@@ -40,8 +41,8 @@ const  App = () => {
             <Route path="/connexion"  component={Signin}/>
             <Route path="/inscription" component={SignUp}/>
             <Route path="/message" component={Message}/>
-            <PrivateRouterAdminHome exact path="/admin/home" component={AdminHome} />
-            <PrivateRouteListTrajets exact path="/admin/home/listuser" component={UsersList}/>
+            <Route path="/admin/home/listTrajet/:id" component={ListTrajets}/>
+            <PrivateRouteUserList exact path="/admin/home/" component={UsersList}/>
             <PrivateRoute path="/trajet" component={AddTrajet}/>
             <PrivateRouteProfile  component={Profile} path="/profile"/>
             <PrivateRouteListTrajets component={ListtTrajets} path="/mestrajets"/>

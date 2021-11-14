@@ -49,7 +49,7 @@
     width: 250px;
     height: 250px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit:cover;
     border:9px solid rgb(197, 197, 197)
   }
 

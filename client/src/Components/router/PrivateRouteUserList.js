@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect, Route } from 'react-router';
 
 const PrivateRouteUserList = ({component,...rest}) => {
     const isAuth = localStorage.getItem("token");
@@ -12,4 +13,4 @@ const PrivateRouteUserList = ({component,...rest}) => {
     }
 }
 
-export default PrivateRouteUserList
+export default PrivateRouteUserList;

@@ -25,6 +25,7 @@ export const updateUser = createAsyncThunk("update", async (user) => {
 export const loginUser = createAsyncThunk("login", async (user) => {
   try {
     const result = await axios.post("http://localhost:5000/api/user/login",user);
+    console.log(result);
     return result.data;
   } catch (error) {
     console.log(error)
@@ -55,6 +56,17 @@ export const getAllUsers = createAsyncThunk("getAllUsers", async () => {
     console.log(error);
   }
 });
+
+export const deleteuser = createAsyncThunk("user/dalete", async (id) => {
+  try {
+    const result = await axios.delete(`http://localhost:5000/api/user/${id}`);
+    return result.data;
+  } catch (error) {
+    console.log(error)
+  }
+});
+
+
 const initialState = {
   user: null,
   status: null,
@@ -129,6 +141,15 @@ export const userSlice = createSlice({
     },
     [getAllUsers.rejected]: (state) => {
       state.status = "failed";
+    },
+    [deleteuser.pending]: (state) => {
+      state.status = "pending";
+    },
+    [deleteuser.fulfilled]: (state) => {
+      state.status = "success";
+    },
+    [deleteuser.rejected]: (state) => {
+      state.status = "fail";
     },
   },
 });

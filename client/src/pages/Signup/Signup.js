@@ -74,7 +74,7 @@ export default function SignUp() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          
+          Crée un nouveau compte
         </Typography>
         <form className={classes.form}>
           <Grid container spacing={2}>
@@ -86,7 +86,7 @@ export default function SignUp() {
                 required
                 fullWidth
                 id="firstName"
-                label="First Name"
+                label="Nom de la famille"
                 autoFocus
                 onChange={(e)=>setregister({...register, name:e.target.value})}
               />

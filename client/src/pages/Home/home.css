@@ -3,13 +3,11 @@
     margin-top: 2%;
     object-fit:fill;
 }
-
 .bg2 {
     position:absolute;
-    top: 8%;
-    left: -12%;
+    top: 28%;
+    left: -9%;
 }
-
 .bg2 h1{
     color: white;
     font-weight: bold;
@@ -31,9 +29,10 @@
   font-size: 18px;
 }
 .titrechercher{
-    color: red;
+    color: rgba(136, 50, 50, 0.87);
     text-align: center;
-    margin-top: 3%;
-    font-size: 30px;
-    font-weight: bold;
+    margin: 5% 0;
+    letter-spacing: 1px;
+    font-weight: bolder;
+    
 }

@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { loginUser } from "../../JS/userslice/userSlice";
 import { useHistory } from "react-router-dom";
 
@@ -19,13 +19,14 @@ const Signin = () => {
       height: "100vh",
     },
     image: {
-      backgroundImage: "url(https://source.unsplash.com/WLUHO9A_xik/200x200)",
+      backgroundImage: "url(http://www.ipj.news/enquetes/wp-content/uploads/sites/26/2019/06/illustration-covoiturage-20170827.jpg)",
       backgroundRepeat: "no-repeat",
       backgroundColor:
         theme.palette.type === "light"
           ? theme.palette.grey[50]
           : theme.palette.grey[900],
       backgroundSize: "cover",
+      objectFit:"none",
       backgroundPosition: "center",
     },
     paper: {
@@ -60,6 +61,7 @@ const Signin = () => {
     dispatch(loginUser(login));
       setTimeout(()=>{
         history.push("/");
+        window.location.reload();
       },1000)
   };
   

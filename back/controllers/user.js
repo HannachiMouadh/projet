@@ -35,7 +35,6 @@ module.exports = {
         try{
             const searchedUser = await User.findOne({email});
             if(!searchedUser) return res.status(400).send({msg:"bad Credential"});
-
             const  match = await bcrypt.compare(password,searchedUser.password);
             if(!match) return res.status(400).send({msg:"bad Credential"});
             const payload = {
@@ -70,5 +69,13 @@ module.exports = {
             res.status(400).send({message:"Can not get Users"})
         }
     },
+    delete: async (req, res) => {
+        try {
+          const result = await User.findByIdAndDelete({ _id: req.params.id });
+          res.send("user deleted");
+        } catch (error) {
+          res.send({ msg: "cannot delete user" });
+        }
+    }
 
 }

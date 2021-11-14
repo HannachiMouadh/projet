@@ -53,7 +53,7 @@ const Profile =  () => {
       }));
     const classes = useStyles();
     return(
-        <div className="container">
+        <div className="col-md-11 offset-1">
             <div className="row mt-3">
                 <div className="col-6">
                     <div className="row">

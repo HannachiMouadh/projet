@@ -31,7 +31,7 @@ export const deleteTrajet = createAsyncThunk("trajet/dalete", async (id) => {
 });
 
 
-export const modifierTrajet = createAsyncThunk("modifier/trajet",async ( trajet) => {
+export const modifierTrajet = createAsyncThunk("modifier/trajet",async (trajet) => {
     try {
       const result = await axios.put(`http://localhost:5000/api/trajet/${trajet._id}`, trajet);
       return result.data;
@@ -45,6 +45,7 @@ export const modifierTrajet = createAsyncThunk("modifier/trajet",async ( trajet)
 const initialState = {
   trajet: null,
   status: null,
+  trajets:null
 };
 
 export const trajetSlice = createSlice({
@@ -67,7 +68,7 @@ export const trajetSlice = createSlice({
     },
     [getAllTrajets.fulfilled]: (state,action) => {
       state.status = "success";
-      state.trajet = action.payload.response;
+      state.trajets = action.payload.response;
     },
     [getAllTrajets.rejected]: (state) => {
       state.status = "fail";
